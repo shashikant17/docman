@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 
-var dockerLogoUrl =
-    'https://raw.githubusercontent.com/shashikant17/test_minor_project/main/lib/assets/icons/docker-48.jpg?token=GHSAT0AAAAAAB2U5GGUKKQHGIDNV3EQR3MUY3MLLZA';
+// var dockerLogoUrl =
+//     'https://raw.githubusercontent.com/shashikant17/test_minor_project/main/lib/assets/icons/docker-48.jpg?token=GHSAT0AAAAAAB2U5GGUKKQHGIDNV3EQR3MUY3MLLZA';
 
-var dockerLogo = Image.network(
-  dockerLogoUrl,
+// final dlogo = Image.network(
+//   dockerLogoUrl,
+// );
+
+var dockerLogo = const Image(
+  image: AssetImage('assets/docker-50.png'),
+  fit: BoxFit.scaleDown,
 );
-
-var logo = Image.asset('assets/Docker-Logo-White.png');
 
 final Uri dockerURL = Uri.parse('https://www.docker.com/');
 
