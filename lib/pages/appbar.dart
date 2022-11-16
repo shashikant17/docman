@@ -22,8 +22,7 @@ Future<void> funcLaunchDockerURL() async {
   }
 }
 
-final Uri gitHubURL =
-    Uri.parse('https://github.com/shashikant17/test_minor_project.git');
+final Uri gitHubURL = Uri.parse('https://github.com/shashikant17/DocMan.git');
 
 Future<void> funcLaunchGitHubURL() async {
   if (!await launchUrl(gitHubURL)) {

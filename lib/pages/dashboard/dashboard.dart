@@ -6,15 +6,16 @@ var url =
 final ButtonStyle style =
     ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
+// ignore: non_constant_identifier_names
 var docker_options = Container(
   width: double.infinity,
   height: double.infinity,
   color: Colors.amber,
   child: Column(
     children: <Widget>[
-      Image.network(url),
-      Text("hello"),
-      Text("hii"),
+      // Image.network(url),
+      const Text("hello"),
+      const Text("hii"),
       ElevatedButton(
         style: style,
         onPressed: funcShowDockerContainer,
@@ -30,11 +31,12 @@ var docker_options = Container(
         onPressed: () {},
         child: const Text('Docker Network'),
       ),
-      Text("hii"),
+      const Text("hii"),
     ],
   ),
 );
 
 void funcShowDockerContainer() {
+  // ignore: avoid_print
   print("showing docker container");
 }
