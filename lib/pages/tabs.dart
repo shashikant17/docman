@@ -10,7 +10,7 @@ var tabController = DefaultTabController(
     appBar: appbar,
     body: TabBarView(
       children: [
-        dashboardAttributeList,
+        const DashBoard(),
         settingAttributeList
         // docker_options,
         // const Icon(Icons.settings),
