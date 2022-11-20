@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'pages/navigationbar.dart';
 import 'pages/tabs.dart';
 
 void main() {
@@ -9,15 +10,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  static const String _title = 'DocMan';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'DocMan',
+      title: _title,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'DocMan'),
+      // home: const MyHomePage(title: 'DocMan'),
+      // home: const DashBoardWidget(),
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => const HomeWidget(),
+      },
     );
   }
 }

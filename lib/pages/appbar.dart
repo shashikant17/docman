@@ -52,3 +52,20 @@ var appbar = AppBar(
     ),
   ],
 );
+
+var appbarNavigation = AppBar(
+  leading: IconButton(
+    icon: dockerLogo,
+    onPressed: funcLaunchDockerURL,
+  ),
+  title: const Text(
+    'DocMan',
+    style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+  ),
+  actions: const <Widget>[
+    IconButton(
+      onPressed: funcLaunchGitHubURL,
+      icon: Icon(Icons.code),
+    ),
+  ],
+);
