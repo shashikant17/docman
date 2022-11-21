@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'pages/cmd.dart';
 import 'pages/navigationbar.dart';
 import 'pages/tabs.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
+        '/cmd': (BuildContext context) => const CmdOutput(),
       },
     );
   }

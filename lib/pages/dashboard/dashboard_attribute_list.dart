@@ -17,7 +17,9 @@ class DashBoard extends StatelessWidget {
           leading: Icon(Icons.computer),
           trailing: Icon(Icons.arrow_forward_ios),
           contentPadding: EdgeInsets.all(10),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/cmd');
+          },
         ),
         ListTile(
           title: Text("Images"),
