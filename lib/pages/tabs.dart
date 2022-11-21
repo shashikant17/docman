@@ -8,10 +8,10 @@ var tabController = DefaultTabController(
   length: 2,
   child: Scaffold(
     appBar: appbar,
-    body: TabBarView(
+    body: const TabBarView(
       children: [
-        const DashBoard(),
-        settingAttributeList
+        DashBoard(),
+        Settings()
         // docker_options,
         // const Icon(Icons.settings),
       ],

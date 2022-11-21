@@ -17,7 +17,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   static final List<dynamic> _widgetOptions = <dynamic>[
     // ignore: prefer_const_constructors
     DashBoard(),
-    settingAttributeList,
+    // ignore: prefer_const_constructors
+    Settings(),
   ];
 
   void _onItemTapped(int index) {
