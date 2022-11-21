@@ -31,6 +31,10 @@ class Settings extends StatelessWidget {
             contentPadding: EdgeInsets.all(10),
             // onTap: () {},
           ),
+          FloatingActionButton.extended(
+              icon: const Icon(Icons.add),
+              onPressed: () {},
+              label: const Text("Add a New Host")),
         ]);
   }
 }
