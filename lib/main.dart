@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'pages/cmd.dart';
+import 'pages/dashboard/show_container.dart';
 import 'pages/navigationbar.dart';
 import 'pages/tabs.dart';
 
@@ -20,13 +19,21 @@ class MyApp extends StatelessWidget {
       title: _title,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // primaryColor: const Color(0xff030303),
+        scaffoldBackgroundColor: const Color(0xffe7eaed),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xff030303),
+          foregroundColor: Color(0xffe7eaed),
+        ),
+        cardColor: const Color(0xffe7eaed),
+        useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'DocMan'),
       // home: const DashBoardWidget(),
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
-        '/cmd': (BuildContext context) => const CmdOutput(),
+        '/cmd': (BuildContext context) => const ShowContainer(),
       },
     );
   }

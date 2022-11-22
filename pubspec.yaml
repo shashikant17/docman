@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/Docker-Logo-White.png
     - assets/docker-50.png
+    - assets/docker-50-light.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

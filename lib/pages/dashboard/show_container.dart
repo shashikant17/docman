@@ -1,19 +1,18 @@
 // ignore_for_file: sort_child_properties_last
 
-import 'package:docman/pages/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class CmdOutput extends StatefulWidget {
-  const CmdOutput({Key? key}) : super(key: key);
+class ShowContainer extends StatefulWidget {
+  const ShowContainer({Key? key}) : super(key: key);
 
   @override
-  CmdOutputState createState() => CmdOutputState();
+  ShowContainerState createState() => ShowContainerState();
 }
 
-class CmdOutputState extends State<CmdOutput> {
-  late String userCmd;
-  late var cmdoutput = "";
+class ShowContainerState extends State<ShowContainer> {
+  late String userCmd = "docker ps -a";
+  late var showContainer = "";
   web(userCmd) async {
     var url = await http.get(
       Uri.http("192.168.22.85", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
@@ -24,9 +23,13 @@ class CmdOutputState extends State<CmdOutput> {
     print(response.body);
     // print(url.body.runtimeType);
 
+    // setState(() {
+    //   showContainer = url.body;
+    //   // print(showContainer);
+    // });
     setState(() {
-      cmdoutput = url.body;
-      // print(cmdoutput);
+      showContainer = url.body;
+      // print(showContainer);
     });
   }
 
@@ -34,12 +37,14 @@ class CmdOutputState extends State<CmdOutput> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[50],
-      appBar: appbarNavigation,
+      appBar: AppBar(
+        title: const Text('Containers'),
+      ),
       body: Column(
         children: [
           SizedBox(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(2.5),
               child: Card(
                 child: TextField(
                   textAlign: TextAlign.center,
@@ -61,11 +66,11 @@ class CmdOutputState extends State<CmdOutput> {
           ),
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(2.5),
               child: Card(
                 child: Center(
                   child: Text(
-                    cmdoutput,
+                    showContainer,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       color: Colors.black87,
@@ -78,6 +83,23 @@ class CmdOutputState extends State<CmdOutput> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(2.5),
+            child: SizedBox(
+              width: 700,
+              child: FloatingActionButton.extended(
+                  icon: const Icon(Icons.add),
+                  backgroundColor: const Color(0xff030303),
+                  onPressed: () {
+                    // Navigator.pushNamed(context, '/launchcontainer');
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const LaunchContainer()));
+                  },
+                  label: const Text("Create a new container")),
+            ),
+          )
         ],
       ),
     );

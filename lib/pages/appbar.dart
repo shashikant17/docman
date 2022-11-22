@@ -10,7 +10,7 @@ import 'dart:async';
 // );
 
 var dockerLogo = const Image(
-  image: AssetImage('assets/docker-50.png'),
+  image: AssetImage('assets/docker-50-light.png'),
   fit: BoxFit.scaleDown,
 );
 
