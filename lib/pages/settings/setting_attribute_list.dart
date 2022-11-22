@@ -33,6 +33,7 @@ class Settings extends StatelessWidget {
           ),
           FloatingActionButton.extended(
               icon: const Icon(Icons.add),
+              backgroundColor: const Color(0xff030303),
               onPressed: () {},
               label: const Text("Add a New Host")),
         ]);
