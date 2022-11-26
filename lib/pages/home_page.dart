@@ -35,6 +35,8 @@ class _HomeWidgetState extends State<HomeWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color(0xff4A6572),
+        unselectedItemColor: Colors.white70,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.dashboard),
@@ -46,7 +48,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               backgroundColor: Colors.amber),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue.shade800,
+        selectedItemColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );

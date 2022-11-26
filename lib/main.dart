@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/dashboard/show_container.dart';
-import 'pages/navigationbar.dart';
+import 'pages/home_page.dart';
 import 'pages/tabs.dart';
 
 void main() {
@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         // primaryColor: const Color(0xff030303),
         scaffoldBackgroundColor: const Color(0xffe7eaed),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xff030303),
+          // backgroundColor: Color(0xff030303),
+          backgroundColor: Color(0xff232F34),
           foregroundColor: Color(0xffe7eaed),
         ),
         cardColor: const Color(0xffe7eaed),
@@ -33,24 +34,24 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
-        '/cmd': (BuildContext context) => const ShowContainer(),
+        '/cmd': (BuildContext context) => const ShowContainers(),
       },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+//   final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return tabController;
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return tabController;
+//   }
+// }

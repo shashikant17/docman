@@ -3,36 +3,38 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../server_details.dart';
 import 'launch_container.dart';
 
-class ShowContainer extends StatefulWidget {
-  const ShowContainer({Key? key}) : super(key: key);
+class ShowContainers extends StatefulWidget {
+  const ShowContainers({Key? key}) : super(key: key);
 
   @override
-  ShowContainerState createState() => ShowContainerState();
+  ShowContainersState createState() => ShowContainersState();
 }
 
-class ShowContainerState extends State<ShowContainer> {
-  late String userCmd = "docker ps -a";
-  late var showContainer = "";
-  web(userCmd) async {
+class ShowContainersState extends State<ShowContainers> {
+  // String serverIP = "192.168.151.85";
+  String userCmd = "docker ps -a";
+  late var showContainersOutput = "";
+
+  web(userCmd, ip) async {
     var url = await http.get(
-      Uri.http("192.168.22.85", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
+      Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
     );
     // print(url.body);
-    var response = url;
-    // ignore: avoid_print
-    print(response.body);
+    // var response = url;
+    // print(response.body);
     // print(url.body.runtimeType);
-
-    // setState(() {
-    //   showContainer = url.body;
-    //   // print(showContainer);
-    // });
     setState(() {
-      showContainer = url.body;
-      // print(showContainer);
+      showContainersOutput = url.body;
     });
+  }
+
+  @override
+  // ignore: must_call_super
+  void initState() {
+    web(userCmd, serverIP);
   }
 
   @override
@@ -44,35 +46,13 @@ class ShowContainerState extends State<ShowContainer> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.all(2.5),
-              child: Card(
-                child: TextField(
-                  textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
-                    hintText: "Enter Command Here..",
-                  ),
-                  onChanged: (value) {
-                    setState(() {
-                      userCmd = value;
-                    });
-                  },
-                  onSubmitted: (value) {
-                    web(userCmd);
-                  },
-                ),
-                elevation: 5,
-              ),
-            ),
-          ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(2.5),
               child: Card(
                 child: Center(
                   child: Text(
-                    showContainer,
+                    showContainersOutput,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       color: Colors.black87,
@@ -91,7 +71,8 @@ class ShowContainerState extends State<ShowContainer> {
               width: 700,
               child: FloatingActionButton.extended(
                   icon: const Icon(Icons.add),
-                  backgroundColor: const Color(0xff030303),
+                  // backgroundColor: const Color(0xff030303),
+                  backgroundColor: const Color(0xff344955),
                   onPressed: () {
                     // Navigator.pushNamed(context, '/launchcontainer');
                     Navigator.pushReplacement(
