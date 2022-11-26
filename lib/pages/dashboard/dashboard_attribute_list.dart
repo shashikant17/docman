@@ -20,7 +20,7 @@ class DashBoard extends StatelessWidget {
           hoverColor: Colors.blue.shade100,
           iconColor: const Color(0xffb62551),
           onTap: () {
-            Navigator.pushNamed(context, '/cmd');
+            Navigator.pushNamed(context, '/showcontainer');
           },
         ),
         const Divider(

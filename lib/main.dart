@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/dashboard/show_container.dart';
+
+import 'pages/dashboard/containers/show_container.dart';
 import 'pages/home_page.dart';
-import 'pages/tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
-        '/cmd': (BuildContext context) => const ShowContainers(),
+        '/showcontainer': (BuildContext context) => const ShowContainers(),
       },
     );
   }

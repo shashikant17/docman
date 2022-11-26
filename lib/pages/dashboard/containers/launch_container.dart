@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:docman/pages/server_details.dart';
+import 'package:http/http.dart' as http;
+
 class LaunchContainer extends StatefulWidget {
   const LaunchContainer({super.key});
 
@@ -15,6 +18,18 @@ class LaunchContainerState extends State<LaunchContainer> {
 
   late String imageName = "";
   late String containerName = "";
+
+  String userCmd = "";
+  late var showContainersOutput = "";
+
+  web(userCmd, ip) async {
+    var url = await http.get(
+      Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
+    );
+    setState(() {
+      showContainersOutput = url.body;
+    });
+  }
 
   // @override
   // void initState() {
@@ -63,15 +78,15 @@ class LaunchContainerState extends State<LaunchContainer> {
                     hoverColor: Colors.blue.shade100,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Colors.blue.shade100,
+                      borderSide: const BorderSide(
+                        color: Color(0xff4A6572),
                         width: 1.0,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 114, 139, 250),
+                        color: Color(0xff4A6572),
                         width: 2.0,
                       ),
                     ),
@@ -93,15 +108,17 @@ class LaunchContainerState extends State<LaunchContainer> {
                     hoverColor: Colors.blue.shade100,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                        color: Colors.blue.shade100,
+                      borderSide: const BorderSide(
+                        // color: Colors.blue.shade100,
+                        color: Color(0xff4A6572),
                         width: 1.0,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: const BorderSide(
-                        color: Color.fromARGB(255, 114, 139, 250),
+                        // color: Color.fromARGB(255, 114, 139, 250),
+                        color: Color(0xff4A6572),
                         width: 2.0,
                       ),
                     ),
@@ -125,6 +142,11 @@ class LaunchContainerState extends State<LaunchContainer> {
                     onPressed: () {
                       _printInputValues();
                       if (containerName.isNotEmpty && imageName.isNotEmpty) {
+                        userCmd =
+                            "docker run -dit --name $containerName $imageName";
+
+                        web(userCmd, serverIP);
+
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Container Launched')));
