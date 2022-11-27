@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/dashboard/containers/show_container.dart';
+import 'pages/dashboard/images/show_images.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
         '/showcontainer': (BuildContext context) => const ShowContainers(),
+        '/showimages': (BuildContext context) => const ShowImages(),
       },
     );
   }
