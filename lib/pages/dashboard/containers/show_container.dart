@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:docman/pages/dashboard/containers/remove_container.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -75,7 +76,14 @@ class ShowContainersState extends State<ShowContainers> {
                   child: SizedBox(
                     width: 700,
                     child: FloatingActionButton.extended(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RemoveContainer(),
+                          ),
+                        );
+                      },
                       label: const Text("Remove container"),
                       elevation: 5,
                       backgroundColor: Colors.red.shade800,
