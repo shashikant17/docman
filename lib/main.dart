@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'pages/cmd.dart';
 import 'pages/dashboard/containers/container_navigation.dart';
 import 'pages/dashboard/images/image_navigation.dart';
 import 'pages/home_page.dart';
@@ -36,6 +37,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
         // '/containers': (BuildContext context) => const ShowContainers(),
+        '/terminal': (BuildContext context) => const CmdOutput(),
+
         '/containers': (BuildContext context) => const DockerContainer(),
         // '/showimages': (BuildContext context) => const ShowImages(),
         '/images': (BuildContext context) => const DockerImage(),

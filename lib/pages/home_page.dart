@@ -28,7 +28,31 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarNavigation,
+      appBar: AppBar(
+        elevation: 5,
+        leading: IconButton(
+          icon: dockerLogo,
+          onPressed: funcLaunchDockerURL,
+        ),
+        title: const Text(
+          'DocMan',
+          style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/terminal');
+            },
+            icon: const Icon(Icons.keyboard_alt_outlined),
+            tooltip: "Terminal",
+          ),
+          const IconButton(
+            onPressed: funcLaunchGitHubURL,
+            icon: Icon(Icons.code),
+            tooltip: "GitHub",
+          ),
+        ],
+      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

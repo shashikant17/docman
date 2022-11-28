@@ -1,5 +1,3 @@
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -62,6 +60,7 @@ class ShowImageState extends State<ShowImage> {
             child: Padding(
               padding: const EdgeInsets.all(2.5),
               child: Card(
+                elevation: 5,
                 child: Center(
                   child: Text(
                     cmdOutput,
@@ -73,7 +72,6 @@ class ShowImageState extends State<ShowImage> {
                     ),
                   ),
                 ),
-                elevation: 5,
               ),
             ),
           ),

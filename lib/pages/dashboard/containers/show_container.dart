@@ -1,5 +1,3 @@
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,7 +11,6 @@ class ShowContainers extends StatefulWidget {
 }
 
 class ShowContainersState extends State<ShowContainers> {
-  // String serverIP = "192.168.151.85";
   String userCmd = "docker ps -a";
   late var cmdOutput = "";
 
@@ -22,13 +19,11 @@ class ShowContainersState extends State<ShowContainers> {
       Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
     );
     // print(url.body);
-    // var response = url;
-    // print(response.body);
     // print(url.body.runtimeType);
     setState(() {
       cmdOutput = url.body;
       // ignore: avoid_print
-      print(cmdOutput);
+      // print(cmdOutput);
     });
   }
 
@@ -51,6 +46,7 @@ class ShowContainersState extends State<ShowContainers> {
             child: Padding(
               padding: const EdgeInsets.all(2.5),
               child: Card(
+                elevation: 5,
                 child: Center(
                   child: Text(
                     cmdOutput,
@@ -61,7 +57,6 @@ class ShowContainersState extends State<ShowContainers> {
                     ),
                   ),
                 ),
-                elevation: 5,
               ),
             ),
           ),

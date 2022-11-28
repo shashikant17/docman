@@ -62,10 +62,14 @@ var appbarNavigation = AppBar(
     'DocMan',
     style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
   ),
-  actions: const <Widget>[
+  actions: <Widget>[
     IconButton(
+      onPressed: () {},
+      icon: const Icon(Icons.code),
+    ),
+    const IconButton(
       onPressed: funcLaunchGitHubURL,
-      icon: Icon(Icons.code),
+      icon: Icon(Icons.keyboard_alt_outlined),
     ),
   ],
 );
