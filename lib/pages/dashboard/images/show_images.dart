@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:docman/pages/dashboard/images/push_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -43,16 +44,18 @@ class ShowImagesState extends State<ShowImages> {
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
         title: const Text('Docker Images'),
-        actions: <Widget>[
+        actions: const <Widget>[
           // PUSH Image - Working
-          IconButton(
+          PushImage(),
+          /*IconButton(
             onPressed: () {},
             icon: const Icon(Icons.arrow_upward),
             tooltip: "Push",
             padding: const EdgeInsets.all(5),
-          ),
+          ),*/
+
           // PULL Image - Complete
-          const PullImage(),
+          PullImage(),
         ],
       ),
       body: Column(
