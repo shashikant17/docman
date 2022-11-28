@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:docman/pages/server_details.dart';
 import 'package:http/http.dart' as http;
 
-class PushImage extends StatefulWidget {
-  const PushImage({super.key});
+class RemoveImage extends StatefulWidget {
+  const RemoveImage({super.key});
 
   @override
-  State<PushImage> createState() => PushImageState();
+  State<RemoveImage> createState() => RemoveImageState();
 }
 
 // Define a corresponding State class.
 // This class holds data related to the Form.
-class PushImageState extends State<PushImage> {
+class RemoveImageState extends State<RemoveImage> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
 
@@ -20,14 +20,14 @@ class PushImageState extends State<PushImage> {
   late String version = "latest";
 
   String userCmd = "";
-  // late var showContainersOutput = "";
+  late var cmdOutput = "";
 
   web(userCmd, ip) async {
     var url = await http.get(
       Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
     );
     setState(() {
-      // showContainersOutput = url.body;
+      cmdOutput = url.body;
     });
   }
 
@@ -137,40 +137,38 @@ class PushImageState extends State<PushImage> {
               SizedBox(
                 // width: 500,
                 child: FloatingActionButton.extended(
-                    icon: const Icon(Icons.arrow_upward),
+                    icon: const Icon(Icons.delete),
                     // backgroundColor: const Color(0xff344955),
-                    backgroundColor: Colors.purple,
+                    backgroundColor: Colors.red,
                     onPressed: () {
                       _printInputValues();
                       if (version.isNotEmpty && imageName.isNotEmpty) {
-                        userCmd = "docker push $imageName:$version";
+                        userCmd = "docker rmi $imageName:$version";
 
                         // ignore: avoid_print
                         print(userCmd);
-                        // web(userCmd, serverIP);
+                        web(userCmd, serverIP);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Pushing Image to Docker Hub')));
+                            const SnackBar(content: Text('Removing Image')));
                       } else if (version.isEmpty && imageName.isNotEmpty) {
                         version = "latest";
 
-                        userCmd = "docker push $imageName:$version";
+                        userCmd = "docker rmi $imageName:$version";
 
                         // ignore: avoid_print
                         print(userCmd);
-                        // web(userCmd, serverIP);
+                        web(userCmd, serverIP);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Pushing Image to Docker Hub')));
+                            const SnackBar(content: Text('Removing Image')));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Enter all details correctly')));
                       }
                     },
-                    label: const Text("Push Image")),
+                    label: const Text("Remove Image")),
               ),
             ],
           ),

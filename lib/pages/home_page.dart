@@ -15,10 +15,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
 
   static final List<dynamic> _widgetOptions = <dynamic>[
-    // ignore: prefer_const_constructors
-    DashBoard(),
-    // ignore: prefer_const_constructors
-    Settings(),
+    const DashBoard(),
+    const Settings(),
   ];
 
   void _onItemTapped(int index) {
@@ -36,8 +34,8 @@ class _HomeWidgetState extends State<HomeWidget> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xff4A6572),
-        unselectedItemColor: Colors.white70,
-        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),

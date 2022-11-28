@@ -150,6 +150,17 @@ class LaunchContainerState extends State<LaunchContainer> {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Container Launched')));
+                      } else if (containerName.isEmpty &&
+                          imageName.isNotEmpty) {
+                        userCmd = "docker run -dit $imageName";
+
+                        // ignore: avoid_print
+                        print(userCmd);
+                        web(userCmd, serverIP);
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Container Launched')));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(

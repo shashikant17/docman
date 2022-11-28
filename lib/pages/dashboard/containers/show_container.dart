@@ -67,6 +67,7 @@ class ShowContainersState extends State<ShowContainers> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Flexible(
                 child: Container(

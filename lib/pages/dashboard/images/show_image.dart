@@ -1,23 +1,21 @@
 // ignore_for_file: sort_child_properties_last
 
-import 'package:docman/pages/dashboard/images/push_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../../server_details.dart';
-import 'pull_image.dart';
 
-class ShowImageTest extends StatefulWidget {
-  const ShowImageTest({Key? key}) : super(key: key);
+class ShowImage extends StatefulWidget {
+  const ShowImage({Key? key}) : super(key: key);
 
   @override
-  ShowImageTestState createState() => ShowImageTestState();
+  ShowImageState createState() => ShowImageState();
 }
 
-class ShowImageTestState extends State<ShowImageTest> {
+class ShowImageState extends State<ShowImage> {
   // String serverIP = "";
   String userCmd = "docker images";
-  late var showContainersOutput = "";
+  late var cmdOutput = "";
 
   web(userCmd, ip) async {
     var url = await http.get(
@@ -28,7 +26,7 @@ class ShowImageTestState extends State<ShowImageTest> {
     // print(response.body);
     // print(url.body.runtimeType);
     setState(() {
-      showContainersOutput = url.body;
+      cmdOutput = url.body;
     });
   }
 
@@ -66,7 +64,7 @@ class ShowImageTestState extends State<ShowImageTest> {
               child: Card(
                 child: Center(
                   child: Text(
-                    showContainersOutput,
+                    cmdOutput,
                     // ignore: prefer_const_constructors
                     style: TextStyle(
                       color: Colors.black87,
