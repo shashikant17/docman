@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:docman/pages/server_details.dart';
 import 'package:http/http.dart' as http;
 
-class RemoveContainer extends StatefulWidget {
-  const RemoveContainer({super.key});
+class StopContainer extends StatefulWidget {
+  const StopContainer({super.key});
 
   @override
-  State<RemoveContainer> createState() => RemoveContainerState();
+  State<StopContainer> createState() => StopContainerState();
 }
 
 // Define a corresponding State class.
 // This class holds data related to the Form.
-class RemoveContainerState extends State<RemoveContainer> {
+class StopContainerState extends State<StopContainer> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
 
@@ -138,41 +138,47 @@ class RemoveContainerState extends State<RemoveContainer> {
               SizedBox(
                 // width: 500,
                 child: FloatingActionButton.extended(
-                    icon: const Icon(Icons.delete),
+                    icon: const Icon(Icons.stop),
                     // backgroundColor: const Color(0xff344955),
-                    backgroundColor: Colors.red.shade600,
+                    backgroundColor: Colors.orange,
                     onPressed: () {
                       _printInputValues();
                       if (containerName.isNotEmpty && containerID.isEmpty) {
-                        userCmd = "docker rm --force $containerName";
+                        userCmd = "docker stop $containerName";
 
+                        // ignore: avoid_print
+                        print(userCmd);
                         web(userCmd, serverIP);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Container Removed')));
+                            const SnackBar(content: Text('Container Stoped')));
                       }
                       if (containerName.isEmpty && containerID.isNotEmpty) {
-                        userCmd = "docker rm --force $containerID";
+                        userCmd = "docker stop $containerID";
 
+                        // ignore: avoid_print
+                        print(userCmd);
                         web(userCmd, serverIP);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Container Removed')));
+                            const SnackBar(content: Text('Container Stoped')));
                       }
                       if (containerName.isNotEmpty && containerID.isNotEmpty) {
-                        userCmd = "docker rm --force $containerName";
+                        userCmd = "docker stop $containerName";
 
+                        // ignore: avoid_print
+                        print(userCmd);
                         web(userCmd, serverIP);
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Container Removed')));
+                            const SnackBar(content: Text('Container Stoped')));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Enter details correctly')));
                       }
                     },
-                    label: const Text("Remove Container")),
+                    label: const Text("Stop Container")),
               ),
             ],
           ),

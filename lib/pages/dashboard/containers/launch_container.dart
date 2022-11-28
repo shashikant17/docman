@@ -20,14 +20,16 @@ class LaunchContainerState extends State<LaunchContainer> {
   late String containerName = "";
 
   String userCmd = "";
-  late var showContainersOutput = "";
+  late var cmdOutput = "";
 
   web(userCmd, ip) async {
     var url = await http.get(
       Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
     );
     setState(() {
-      showContainersOutput = url.body;
+      cmdOutput = url.body;
+      // ignore: avoid_print
+      print(cmdOutput);
     });
   }
 
@@ -53,9 +55,9 @@ class LaunchContainerState extends State<LaunchContainer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*  appBar: AppBar(
         title: const Text('Launch New Container'),
-      ),
+      ),*/
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
@@ -138,7 +140,8 @@ class LaunchContainerState extends State<LaunchContainer> {
                 // width: 500,
                 child: FloatingActionButton.extended(
                     icon: const Icon(Icons.add),
-                    backgroundColor: const Color(0xff344955),
+                    // backgroundColor: const Color(0xff344955),
+                    backgroundColor: Colors.green,
                     onPressed: () {
                       _printInputValues();
                       if (containerName.isNotEmpty && imageName.isNotEmpty) {
