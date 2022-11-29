@@ -4,6 +4,7 @@ import 'pages/cmd.dart';
 import 'pages/dashboard/containers/container_navigation.dart';
 import 'pages/dashboard/images/image_navigation.dart';
 import 'pages/dashboard/networks/show_network.dart';
+import 'pages/dashboard/volumes/show_volumes.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -37,12 +38,15 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => const HomeWidget(),
-        // '/containers': (BuildContext context) => const ShowContainers(),
         '/terminal': (BuildContext context) => const CmdOutput(),
+        // '/containers': (BuildContext context) => const ShowContainers(),
+        // '/showimages': (BuildContext context) => const ShowImages(),
 
         '/containers': (BuildContext context) => const DockerContainer(),
-        // '/showimages': (BuildContext context) => const ShowImages(),
+
         '/images': (BuildContext context) => const DockerImage(),
+
+        '/volumes': (BuildContext context) => const ShowVolume(),
 
         '/networks': (BuildContext context) => const ShowNetwork(),
       },
