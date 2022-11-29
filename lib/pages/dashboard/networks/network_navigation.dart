@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'create_volume.dart';
-import 'inspect_volume.dart';
-import 'remove_volume.dart';
-import 'show_volumes.dart';
+import 'create_network.dart';
+import 'inspect_network.dart';
+import 'remove_network.dart';
+import 'show_network.dart';
 
-class DockerVolume extends StatefulWidget {
-  const DockerVolume({super.key});
+class DockerNetwork extends StatefulWidget {
+  const DockerNetwork({super.key});
 
   @override
-  State<DockerVolume> createState() => _DockerVolumeState();
+  State<DockerNetwork> createState() => _DockerNetworkState();
 }
 
-class _DockerVolumeState extends State<DockerVolume> {
+class _DockerNetworkState extends State<DockerNetwork> {
   int _selectedIndex = 0;
+
   static const List<Widget> _widgetOptions = <Widget>[
-    ShowVolume(),
-    CreateVolume(),
-    RemoveVolume(),
-    InspectVolume(),
+    ShowNetwork(),
+    CreateNetwork(),
+    RemoveNetwork(),
+    InspectNetwork(),
   ];
 
   void _onItemTapped(int index) {
@@ -41,8 +42,8 @@ class _DockerVolumeState extends State<DockerVolume> {
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.storage),
-            label: 'Docker Volume',
+            icon: Icon(Icons.wifi),
+            label: 'Docker Networks',
             // backgroundColor: Colors.red,
             backgroundColor: Color(0xff4A6572),
           ),

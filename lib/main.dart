@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'pages/cmd.dart';
 import 'pages/dashboard/containers/container_navigation.dart';
 import 'pages/dashboard/images/image_navigation.dart';
-import 'pages/dashboard/networks/show_network.dart';
+import 'pages/dashboard/networks/network_navigation.dart';
 import 'pages/dashboard/volumes/volume_navigation.dart';
 import 'pages/home_page.dart';
 
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
 
         '/volumes': (BuildContext context) => const DockerVolume(),
 
-        '/networks': (BuildContext context) => const ShowNetwork(),
+        '/networks': (BuildContext context) => const DockerNetwork(),
       },
     );
   }

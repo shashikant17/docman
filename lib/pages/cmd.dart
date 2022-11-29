@@ -71,15 +71,15 @@ class CmdOutputState extends State<CmdOutput> {
             ),
           ),
           Flexible(
-            child: Container(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.all(8.0),
+              scrollDirection: Axis.vertical,
               child: Card(
                 elevation: 5,
                 child: Center(
                   child: Text(
                     cmdOutput,
-                    // ignore: prefer_const_constructors
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

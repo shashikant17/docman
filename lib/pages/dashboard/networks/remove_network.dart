@@ -3,15 +3,15 @@ import 'package:http/http.dart' as http;
 
 import '../../server_details.dart';
 
-class InspectVolume extends StatefulWidget {
-  const InspectVolume({super.key});
+class RemoveNetwork extends StatefulWidget {
+  const RemoveNetwork({super.key});
 
   @override
-  State<InspectVolume> createState() => InspectVolumeState();
+  State<RemoveNetwork> createState() => RemoveNetworkState();
 }
 
-class InspectVolumeState extends State<InspectVolume> {
-  late String volumeName = "";
+class RemoveNetworkState extends State<RemoveNetwork> {
+  late String networkName = "";
 
   String userCmd = "";
   late var cmdOutput = "";
@@ -29,7 +29,7 @@ class InspectVolumeState extends State<InspectVolume> {
 
   void _printInputValues() {
     // ignore: avoid_print
-    print("Volume Name: $volumeName\n");
+    print("Network Name: $networkName\n");
   }
 
   @override
@@ -45,9 +45,9 @@ class InspectVolumeState extends State<InspectVolume> {
                 child: TextField(
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    labelText: 'Volume Name',
-                    hintText: "Enter Volume Name",
-                    helperText: 'example: myVolume',
+                    labelText: 'Network Name',
+                    hintText: "Enter Network Name",
+                    helperText: 'example: myNetwork',
                     filled: true,
                     hoverColor: Colors.blue.shade100,
                     enabledBorder: OutlineInputBorder(
@@ -67,42 +67,34 @@ class InspectVolumeState extends State<InspectVolume> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      volumeName = value;
+                      networkName = value;
                     });
-                  },
-                  onSubmitted: (value) {
-                    _printInputValues();
-                    if (volumeName.isNotEmpty) {
-                      userCmd = "docker volume inspect $volumeName";
-
-                      // ignore: avoid_print
-                      print(userCmd);
-                      web(userCmd, serverIP);
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text('Enter volume name correctly')));
-                    }
                   },
                 ),
               ),
-              Flexible(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(2.5),
-                  scrollDirection: Axis.vertical,
-                  child: Card(
-                    elevation: 5,
-                    child: Center(
-                      child: Text(
-                        cmdOutput,
-                        style: const TextStyle(
-                          color: Colors.black87,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              SizedBox(
+                // width: 500,
+                child: FloatingActionButton.extended(
+                    icon: const Icon(Icons.delete),
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      _printInputValues();
+                      if (networkName.isNotEmpty) {
+                        userCmd = "docker network rm $networkName";
+
+                        // ignore: avoid_print
+                        print(userCmd);
+                        web(userCmd, serverIP);
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Network Removed')));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Enter Network name correctly')));
+                      }
+                    },
+                    label: const Text("Remove Network")),
               ),
             ],
           ),

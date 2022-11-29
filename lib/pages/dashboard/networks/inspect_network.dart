@@ -3,15 +3,15 @@ import 'package:http/http.dart' as http;
 
 import '../../server_details.dart';
 
-class InspectVolume extends StatefulWidget {
-  const InspectVolume({super.key});
+class InspectNetwork extends StatefulWidget {
+  const InspectNetwork({super.key});
 
   @override
-  State<InspectVolume> createState() => InspectVolumeState();
+  State<InspectNetwork> createState() => InspectNetworkState();
 }
 
-class InspectVolumeState extends State<InspectVolume> {
-  late String volumeName = "";
+class InspectNetworkState extends State<InspectNetwork> {
+  late String networkName = "";
 
   String userCmd = "";
   late var cmdOutput = "";
@@ -29,7 +29,7 @@ class InspectVolumeState extends State<InspectVolume> {
 
   void _printInputValues() {
     // ignore: avoid_print
-    print("Volume Name: $volumeName\n");
+    print("Network Name: $networkName\n");
   }
 
   @override
@@ -45,9 +45,9 @@ class InspectVolumeState extends State<InspectVolume> {
                 child: TextField(
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    labelText: 'Volume Name',
-                    hintText: "Enter Volume Name",
-                    helperText: 'example: myVolume',
+                    labelText: 'Network Name',
+                    hintText: "Enter Network Name",
+                    helperText: 'example: myNetwork',
                     filled: true,
                     hoverColor: Colors.blue.shade100,
                     enabledBorder: OutlineInputBorder(
@@ -67,20 +67,20 @@ class InspectVolumeState extends State<InspectVolume> {
                   ),
                   onChanged: (value) {
                     setState(() {
-                      volumeName = value;
+                      networkName = value;
                     });
                   },
                   onSubmitted: (value) {
                     _printInputValues();
-                    if (volumeName.isNotEmpty) {
-                      userCmd = "docker volume inspect $volumeName";
+                    if (networkName.isNotEmpty) {
+                      userCmd = "docker network inspect $networkName";
 
                       // ignore: avoid_print
                       print(userCmd);
                       web(userCmd, serverIP);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text('Enter volume name correctly')));
+                          content: Text('Enter network name correctly')));
                     }
                   },
                 ),

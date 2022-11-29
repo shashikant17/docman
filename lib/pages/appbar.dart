@@ -14,7 +14,8 @@ var dockerLogo = const Image(
   fit: BoxFit.scaleDown,
 );
 
-final Uri dockerURL = Uri.parse('https://www.docker.com/');
+// final Uri dockerURL = Uri.parse('https://www.docker.com/');
+final Uri dockerURL = Uri.parse('https://hub.docker.com/search?q=');
 
 Future<void> funcLaunchDockerURL() async {
   if (!await launchUrl(dockerURL)) {
