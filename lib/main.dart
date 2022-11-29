@@ -4,7 +4,7 @@ import 'pages/cmd.dart';
 import 'pages/dashboard/containers/container_navigation.dart';
 import 'pages/dashboard/images/image_navigation.dart';
 import 'pages/dashboard/networks/show_network.dart';
-import 'pages/dashboard/volumes/show_volumes.dart';
+import 'pages/dashboard/volumes/volume_navigation.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 
         '/images': (BuildContext context) => const DockerImage(),
 
-        '/volumes': (BuildContext context) => const ShowVolume(),
+        '/volumes': (BuildContext context) => const DockerVolume(),
 
         '/networks': (BuildContext context) => const ShowNetwork(),
       },

@@ -192,6 +192,68 @@ class ShowContainersState extends State<ShowContainers> {
             ],
           ),
 
+/*
+modified :
+
+Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Flexible(
+                child: Container(
+                  // alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(2.5),
+                  // width: 700,
+                  child: SizedBox(
+                    width: 700,
+                    child: FloatingActionButton.extended(
+                      onPressed: () {
+                        // // Navigator.pushNamed(context, '/launchcontainer');
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const RemoveContainer(),
+                        //   ),
+                        // );
+                      },
+                      label: const Text("Remove Volume"),
+                      elevation: 5,
+                      backgroundColor: Colors.red.shade800,
+                      icon: const Icon(Icons.delete),
+                      heroTag: "Remove Volume",
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  // alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.all(2.5),
+                  // width: 700,
+                  child: SizedBox(
+                    width: 700,
+                    child: FloatingActionButton.extended(
+                      onPressed: () {
+                        // // Navigator.pushNamed(context, '/launchcontainer');
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const RemoveContainer(),
+                        //   ),
+                        // );
+                      },
+                      label: const Text("Create Volume"),
+                      elevation: 5,
+                      backgroundColor: const Color(0xff4A6572),
+                      icon: const Icon(Icons.add),
+                      heroTag: "Create Volume",
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+*/
           // Padding(
           //   padding: const EdgeInsets.all(2.5),
           //   child: SizedBox(

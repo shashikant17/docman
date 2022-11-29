@@ -19,8 +19,6 @@ class ShowVolumeState extends State<ShowVolume> {
       Uri.http("$ip", "/cgi-bin/cmdTestH.py", {"cmd": userCmd}),
     );
     // print(url.body);
-    // var response = url;
-    // print(response.body);
     // print(url.body.runtimeType);
     setState(() {
       cmdOutput = url.body;
@@ -37,9 +35,9 @@ class ShowVolumeState extends State<ShowVolume> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[50],
-      appBar: AppBar(
-        title: const Text('Docker Volumes'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Docker Volumes'),
+      // ),
       body: Column(
         children: [
           Flexible(

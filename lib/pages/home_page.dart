@@ -14,7 +14,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
 
-  static final List<dynamic> _widgetOptions = <dynamic>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const DashBoard(),
     const Settings(),
   ];

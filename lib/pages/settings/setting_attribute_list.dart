@@ -7,20 +7,19 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Scaffold(
+      body: ListView(
         padding: const EdgeInsets.all(5),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
-          Expanded(
-            child: ListTile(
-              title: Text("RedHat-Host"),
-              subtitle: Text("http://192.168.109.85/cgi-bin/"),
-              leading: Icon(Icons.miscellaneous_services_rounded),
-              trailing:
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-              contentPadding: EdgeInsets.all(10),
-              // onTap: () {},
-            ),
+          ListTile(
+            title: Text("RedHat-Host"),
+            subtitle: Text("http://192.168.109.85/cgi-bin/"),
+            leading: Icon(Icons.miscellaneous_services_rounded),
+            trailing:
+                IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+            contentPadding: EdgeInsets.all(10),
+            // onTap: () {},
           ),
           ListTile(
             title: Text("Ubuntu-Host"),
@@ -36,6 +35,8 @@ class Settings extends StatelessWidget {
               backgroundColor: const Color(0xff344955),
               onPressed: () {},
               label: const Text("Add a New Host")),
-        ]);
+        ],
+      ),
+    );
   }
 }
