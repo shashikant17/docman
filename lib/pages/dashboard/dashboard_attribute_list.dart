@@ -122,7 +122,9 @@ class DashBoardState extends State<DashBoard> {
             contentPadding: const EdgeInsets.all(10),
             hoverColor: Colors.blue.shade100,
             iconColor: const Color(0xffb62551),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/networks');
+            },
           ),
           const Divider(
             color: Colors.grey,

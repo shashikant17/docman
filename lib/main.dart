@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'pages/cmd.dart';
 import 'pages/dashboard/containers/container_navigation.dart';
 import 'pages/dashboard/images/image_navigation.dart';
+import 'pages/dashboard/networks/show_network.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
         '/containers': (BuildContext context) => const DockerContainer(),
         // '/showimages': (BuildContext context) => const ShowImages(),
         '/images': (BuildContext context) => const DockerImage(),
+
+        '/networks': (BuildContext context) => const ShowNetwork(),
       },
     );
   }
